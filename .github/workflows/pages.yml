@@ -1,0 +1,49 @@
+name: Deploy PDF Studio to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Find app directory
+        id: app
+        shell: bash
+        run: |
+          if [ -f Web_PDF_Tool/package.json ]; then
+            echo "directory=Web_PDF_Tool" >> "$GITHUB_OUTPUT"
+          else
+            echo "directory=." >> "$GITHUB_OUTPUT"
+          fi
+      - name: Install, test and build
+        working-directory: ${{ steps.app.outputs.directory }}
+        run: |
+          npm ci
+          npm test
+          npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ steps.app.outputs.directory }}/dist
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

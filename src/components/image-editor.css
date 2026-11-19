@@ -1,0 +1,35 @@
+.signature-file-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.image-editor-controls { margin: 0 23px 18px; border: 1px solid #dce9e0; border-radius: 9px; background: #f7faf8; padding: 12px; }
+.image-edit-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.editing-active { background: #e9f4ed !important; border-color: #93bca1 !important; color: #286c46 !important; }
+.crop-instructions { font-size: 12px; line-height: 1.8; color: #718776; margin-top: 10px; }
+.signature-preview-label { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 5px; margin: 5px 0 10px; font-size: 13px; color: #587761; }
+.signature-preview-label small { font-size: 11px; color: #7b8e80; }
+.crop-frame { position: relative; display: inline-block; max-width: 100%; line-height: 0; vertical-align: middle; }
+.crop-frame > canvas { display: block; width: auto; height: auto; max-width: 100%; max-height: 420px; }
+.crop-overlay { position: absolute; inset: 0; cursor: crosshair; touch-action: none; user-select: none; overflow: hidden; }
+.crop-rectangle { position: absolute; border: 2px solid #2d9060; box-shadow: 0 0 0 2000px #14372666; cursor: move; min-width: 1px; min-height: 1px; }
+.crop-grid { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, transparent 33%, #ffffff70 33%, #ffffff70 calc(33% + 1px), transparent calc(33% + 1px), transparent 66%, #ffffff70 66%, #ffffff70 calc(66% + 1px), transparent calc(66% + 1px)), linear-gradient(to bottom, transparent 33%, #ffffff70 33%, #ffffff70 calc(33% + 1px), transparent calc(33% + 1px), transparent 66%, #ffffff70 66%, #ffffff70 calc(66% + 1px), transparent calc(66% + 1px)); }
+.crop-handle { position: absolute; width: 17px; height: 17px; background: #fff; border: 2px solid #2d9060; border-radius: 3px; z-index: 2; }
+.crop-handle.nw { top: -6px; left: -6px; cursor: nwse-resize; }
+.crop-handle.ne { top: -6px; right: -6px; cursor: nesw-resize; }
+.crop-handle.sw { bottom: -6px; left: -6px; cursor: nesw-resize; }
+.crop-handle.se { bottom: -6px; right: -6px; cursor: nwse-resize; }
+.crop-settings { margin: 0 23px 23px; padding: 14px; border: 1px solid #dce9e0; border-radius: 9px; background: #fbfdfb; }
+.crop-fields { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.crop-fields .field-label { margin: 0 0 14px; font-size: 12px; }
+.crop-actions { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 9px; }
+.crop-actions > .text-button { margin-right: auto; }
+.crop-save-note { margin-top: 10px; text-align: center; }
+@media (max-width: 720px) {
+  .signature-file { flex-wrap: wrap; }
+  .signature-file-actions { margin-left: auto; }
+  .image-editor-controls { margin: 0 16px 16px; }
+  .crop-settings { margin: 0 16px 20px; padding: 12px; }
+  .crop-fields { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .crop-fields .field-label { font-size: 13px; }
+  .crop-actions > .text-button { width: 100%; }
+  .image-edit-toolbar .button { font-size: 12px; }
+  .crop-handle { width: 22px; height: 22px; }
+  .image-stage.signature-source-stage { overflow: visible; }
+}
