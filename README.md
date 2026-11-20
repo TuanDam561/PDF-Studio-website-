@@ -34,7 +34,7 @@ npm run dev
 | Tách PDF | Lấy một dãy trang; mỗi trang một PDF; các nhóm trang thành ZIP |
 | Chỉnh sửa & sắp xếp trang | Thumbnail, xoay, xóa, chọn nhiều trang, đổi thứ tự, đặt lại; hàng nút cố định khi đổi hướng trang |
 | Watermark | Chữ tiếng Việt hoặc PNG/JPG; màu, cỡ chữ, góc, độ đậm, trang áp dụng; hai khung gốc/kết quả xem trước tự cập nhật |
-| Đọc PDF | Xem từng trang, chọn số trang, phóng to/thu nhỏ |
+| Đọc PDF | Mặc định cuộn dọc liên tục; tùy chọn từng trang với vùng bấm trái/phải và phím ← →; chọn số trang, phóng to/thu nhỏ |
 | So sánh PDF | SHA-256, số trang, chữ trích xuất và hình ảnh render theo từng trang |
 | Xóa nền chữ ký | Xóa nền trắng/sáng; chỉnh mềm viền; cắt và xoay ảnh; hoàn tác/làm lại; xuất PNG alpha |
 | Word → PDF | Giao diện “Phát triển sau”, chưa nhận file |
@@ -44,6 +44,8 @@ npm run dev
 Các công cụ cuối chưa có engine phù hợp trong bản React này; không có API giả hoặc âm thầm gửi file tới bên thứ ba. Sau này có thể tích hợp WASM hoặc backend qua lớp xử lý độc lập.
 
 ### Giới hạn rõ ràng
+
+- Khung đọc PDF, xem bản gốc khi tách và xem kết quả mặc định dùng cuộn dọc. Số trang cập nhật theo vị trí cuộn; nhập số trang hoặc bấm nút trước/sau để chuyển nhanh. Chế độ **Từng trang** cho phép bấm nửa trái/phải của trang hoặc dùng phím mũi tên khi khung đọc có focus. Đổi chế độ giữ trang đang đọc; chọn file khác đặt lại trang 1 và chế độ cuộn dọc. Các trang ngoài vùng đọc dùng khung giữ chỗ thay cho canvas để giảm bộ nhớ. Hai khung watermark trực tiếp vẫn dùng điều khiển đồng bộ riêng.
 
 - PDF tối đa 100 MB/file, 200 MB/lượt, 100 file/lượt. Thực tế còn phụ thuộc RAM, độ phức tạp của PDF và thiết bị.
 - Các công cụ nhận PDF mã hóa bằng mật khẩu qua **QPDF WebAssembly**, chạy trong worker trên thiết bị. File chỉ hạn chế in/copy/chỉnh sửa, có mật khẩu mở rỗng, được tự mở khóa; file cần mật khẩu sẽ hiện hộp nhập mật khẩu mở hoặc mật khẩu chủ sở hữu. Có thử lại khi sai, hủy và hủy khi đổi công cụ. Không dò mật khẩu; không hỗ trợ mọi kiểu bảo vệ đặc thù (ví dụ mã hóa bằng chứng thư). Bộ QPDF (~3,25 MB chưa nén, ~0,90 MB gzip) chỉ tải khi gặp PDF mã hóa, phục vụ cùng website, không dùng CDN/API. Không chuyển các trang thành ảnh khi mở khóa.

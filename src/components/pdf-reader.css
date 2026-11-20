@@ -1,0 +1,24 @@
+.pdf-reader{min-width:0}
+.pdf-reader .viewer-toolbar{align-items:center}
+.pdf-reader-modes{padding:3px;background:#edf3ef;border-radius:8px;gap:3px!important}
+.pdf-reader-modes button{border:0;border-radius:6px;background:transparent;color:#536b60;padding:7px 10px;font:inherit;cursor:pointer;white-space:nowrap}
+.pdf-reader-modes button[aria-pressed=true]{background:#fff;color:#226c54;box-shadow:0 1px 4px #17322618;font-weight:700}
+.pdf-reader-hint{margin:0;padding:9px 14px;font-size:12px;line-height:1.6;color:#66796d;background:#f7faf8;border-bottom:1px solid #dfe7e1}
+.pdf-reader .pdf-reader-stage{height:72vh;height:72dvh;max-height:800px;min-height:260px;padding:18px;position:relative;scrollbar-gutter:stable;overflow:auto;overscroll-behavior-y:contain;overflow-anchor:none}
+.pdf-reader-stage:focus-visible{outline:2px solid #34745d;outline-offset:-3px}
+.pdf-reader-pages{width:max-content;min-width:100%;display:flex;flex-direction:column;align-items:center;gap:22px}
+.pdf-reader-page{margin:0;flex-shrink:0}
+.pdf-reader-page figcaption{height:26px;line-height:26px;text-align:center;font-size:11px;color:#60776a}
+.pdf-reader-sheet{position:relative;background:white;box-shadow:0 2px 8px #233e3012}
+.pdf-reader-sheet .page-canvas{display:flex;min-height:0;width:100%;height:100%}
+.pdf-reader-sheet canvas{max-width:none}
+.pdf-reader-placeholder{position:absolute;inset:0;display:grid;place-items:center;color:#93a399;font-size:13px}
+.pdf-reader-side{position:absolute;top:0;bottom:0;width:50%;border:0;background:transparent;cursor:pointer;display:flex;align-items:center;padding:10px;color:#226c54;touch-action:pan-x pan-y}
+.pdf-reader-side.previous{left:0;justify-content:flex-start}
+.pdf-reader-side.next{right:0;justify-content:flex-end}
+.pdf-reader-side svg{opacity:0;border-radius:50%;background:#edf7f1ed;box-sizing:content-box;padding:6px;transition:opacity .15s}
+.pdf-reader-side:not(:disabled):hover svg,.pdf-reader-side:focus-visible svg{opacity:1}
+.pdf-reader-side:focus-visible{outline:2px solid #34745d;outline-offset:-3px}
+.pdf-reader-side:disabled{cursor:default}
+@media(hover:none){.pdf-reader-side:not(:disabled) svg{opacity:.6}}
+@media(max-width:520px){.pdf-reader .viewer-toolbar{justify-content:space-between;gap:7px}.pdf-reader-modes{flex-basis:100%;justify-content:center}.pdf-reader-hint{font-size:11px}.pdf-reader .pdf-reader-stage{padding:18px}.pdf-reader-side{padding:4px}}

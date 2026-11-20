@@ -5,3 +5,13 @@ dist/
 test-results/
 *.log
 public/pdfjs/
+
+# Local secrets and private keys
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
